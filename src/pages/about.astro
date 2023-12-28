@@ -1,5 +1,107 @@
 ---
 const pageTitle = "About Me";
+const identity = {
+	firstName: "Manuel Chagoyan",
+	country: "United States",
+	occupation: "Teacher",
+	hobbies: ["latin dance", "whiskey collecting", "coding"], 
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro", "Photoshop"];	
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+
+
+// BONUS to help students understrand the array map function
+// Array Map Example 1
+let p6students =["Macy", "Raymond", "Amaitem", "Gabby", "Alle"];
+let p6snames = p6students.map(function(studentName)
+	{
+		return  studentName + " is my period 6 student."
+	});
+// Display return items	
+console.log(p6snames);
+ 
+
+// Array Map Example 2
+let p1students = ["Jaime", "Joel", "John", "Cesar", "Gabby"];
+let p1names = p1students.map((studentname)=>{return studentname + " is my period 1 stduent."  });
+// Display return items
+console.log(p1names); 
+
+
+// Short Notation
+let p1names2 = p1students.map(studentname=>console.log(studentname + "Short Notation") );
+
+// Array Map Example 3
+let girlfriends = ["Cheryl", "Janet", "Corinne", "Yanira", "Rose", "Meredith", "Kaylee", "Gardenia", "Maria"];
+let girlnames = girlfriends.map(getNames);
+
+function getNames(name)
+{
+	return name + " was my girlfriend.";
+}
+// Display return items
+console.log(girlnames);
+
+// Star Wars Examples
+
+// Array Map Example 4
+
+const characters = [
+    {
+        name: 'Luke Skywalker',
+        height: '172',
+        mass: '77',
+        eye_color: 'blue',
+        gender: 'male',
+    },
+    {
+        name: 'Darth Vader',
+        height: '202',
+        mass: '136',
+        eye_color: 'yellow',
+        gender: 'male',
+    },
+    {
+        name: 'Leia Organa',
+        height: '150',
+        mass: '49',
+        eye_color: 'brown',
+        gender: 'female',
+    },
+    {
+        name: 'Anakin Skywalker',
+        height: '188',
+        mass: '84',
+        eye_color: 'blue',
+        gender: 'male',
+    },
+];
+
+// Anonymous Function
+const names1 = characters.map(function(character)
+	{
+		return console.log(character.name + "1")
+	});
+
+// Named Function
+const names2 = characters.map(getCharacter);
+
+function getCharacter(character) //Argument can be any name.  Represents object in array
+{
+	console.log(character.name + "2"); // Specifies specific attribute of objects of array
+}
+
+// Arrow Function
+const names3 = characters.map(character=>{return console.log(character.name + "3");});
+// Short Notation
+const height = characters.map(character=>console.log(character.height + " Short Notation"));
+
+
 ---
 
 <html lang="en">
@@ -29,6 +131,33 @@ const pageTitle = "About Me";
 
 		<p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
 
+		<p>Here are a few facts abut me:</p>
+		<ul>
+			<li>My name is {identity.firstName}</li>
+			<li>I live in {identity.country} and I work as a {identity.occupation}</li>
+			<li>
+				Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
 
+			</li>
+		</ul>
+<p>
+	My skills are:
+</p>
+
+	
+	
+
+
+<ul>
+	
+		{skills.map((skill)=> <li>{skill}</li> )}
+
+</ul>
+
+	{happy && <p>I am happy to be learning Astro</p>}
+
+	{finished && <p>I finished this tutorial</p>}
+
+	{goal === 3 ? <p>My goal is to finish in 3 days</p> : <p>My goal is not 3 day</p>}
 	</body>
 </html>
