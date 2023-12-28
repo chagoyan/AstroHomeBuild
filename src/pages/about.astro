@@ -1,4 +1,7 @@
 ---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+
 const pageTitle = "About Me";
 const identity = {
 	firstName: "Manuel Chagoyan",
@@ -13,6 +16,9 @@ const happy = true;
 const finished = false;
 const goal = 3;
 
+const skillColor ="navy";
+const fontWeight = "bold";
+const textCase = "uppercase";
 
 
 // BONUS to help students understrand the array map function
@@ -111,17 +117,28 @@ const height = characters.map(character=>console.log(character.height + " Short 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+
+
+		<!--  Use define vars directive-  -->
+<style define:vars={{skillColor, fontWeight, textCase}}>
+	h1{
+		color:purple;
+		font-size: 4rem;
+	}
+	.skill
+	{
+		color:var(--skillColor);
+		font-weight: var(--fontWeight);
+		text-transform: var(--textCase);
+
+}
+</style>
+
 	</head>
 	<body>
 		<h1>{pageTitle}</h1>
 
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/about/">About</a></li>
-			<li><a href="/contactus/">Contact Us</a></li>
-			<li><a href="/gallery/">Gallery</a></li>
-			<li><a href="/blogs/">Blogs</a></li>
-		</ul>
+<Navigation />
 	
 
 		<h2>About me and my new Astro Site!</h2>
@@ -150,7 +167,7 @@ const height = characters.map(character=>console.log(character.height + " Short 
 
 <ul>
 	
-		{skills.map((skill)=> <li>{skill}</li> )}
+		{skills.map((skill)=> <li class="skill">{skill}</li> )}
 
 </ul>
 
